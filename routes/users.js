@@ -13,8 +13,19 @@ var onIndex = (req, res) => {
         })
         .catch((e) => res.status(500).send(e.stack));
 };
+
+let onShow = (req, res) => {
+    User.findById(req.params.id).then((user) => {
+        console.log(user.dataValues);
+    }).catch((err) => {
+        console.error(err);
+    });
+};
+
+
 router.get('/', onIndex);
 router.get('/users', onIndex);
+router.get('/users/:id', onShow);
 
 
 module.exports = router;
