@@ -9,6 +9,9 @@
     "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0"
   },
+  "scripts": {
+    "seed": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
+  },
   "name": "assignment_calendar_event_planner",
   "version": "1.0.0",
   "main": "index.js",
