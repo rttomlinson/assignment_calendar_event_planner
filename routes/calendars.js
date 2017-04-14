@@ -6,30 +6,34 @@ let Calendar = models.Calendar;
 var sequelize = models.sequelize;
 
 var onIndex = (req, res) => {
-  var calendars;
-  Calendar.findAll({raw: true})
-    .then(cals => {
-      calendars = cals;
-      var promiseArr = [];
-      calendars.forEach(function(calendar) {
-        promiseArr.push(User.findById(calendar.userId, {raw: true}));
-      });
-      return Promise.all(promiseArr);
-    })
-    .then(users => {
-      console.log(users);
-      calendars.forEach(function(calendar) {
-        console.log(calendar);
-        users.forEach(function(user) {
-          if (calendar.userId == user.id) {
-            calendar.user = user;
-          }
-        });
-      });
+    var calendars;
+    Calendar.findAll({
+            raw: true
+        })
+        .then(cals => {
+            calendars = cals;
+            var promiseArr = [];
+            calendars.forEach(function(calendar) {
+                promiseArr.push(User.findById(calendar.userId, {
+                    raw: true
+                }));
+            });
+            return Promise.all(promiseArr);
+        })
+        .then(users => {
+            calendars.forEach(function(calendar) {
+                users.forEach(function(user) {
+                    if (calendar.userId == user.id) {
+                        calendar.user = user;
+                    }
+                });
+            });
 
-      res.render("calendars/index", {calendars});
-    })
-    .catch(e => res.status(500).send(e.stack));
+            res.render("calendars/index", {
+                calendars
+            });
+        })
+        .catch(e => res.status(500).send(e.stack));
 };
 
 // let onShow = (req, res) => {
