@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.8.1",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0"
+  },
+  "name": "assignment_calendar_event_planner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/markmarkyesyes/assignment_calendar_event_planner",
+  "author": "markmarkyesyes <markhahn545@gmail.com>",
+  "license": "MIT"
+}
