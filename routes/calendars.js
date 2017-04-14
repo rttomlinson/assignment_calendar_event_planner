@@ -1,7 +1,7 @@
-var express = require("express");
 var router = express.Router();
 var models = require("../models");
 var User = models.User;
+let Calendar = models.Calendar;
 var sequelize = models.sequelize;
 
 var onIndex = (req, res) => {
